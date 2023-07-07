@@ -8,17 +8,20 @@
 #include <cmath>
 #include <limits>
 #include <vector>
+#include <angles/angles.h>
+
+
 
 namespace irobot_create_toolbox
 {
 
 /// \brief Convert radians to degrees
 template<typename T>
-inline int Rad2Deg(T radians) {return radians / M_PI * 180;}
+inline int Rad2Deg(T radians) {return radians / angles::pi * 180;}
 
 /// \brief Wrap angle between (-pi, pi]
 template<typename T>
-inline T WrapAngle(T angle) {return atan2(sin(angle), cos(angle));}
+inline T WrapAngle(T angle) {return angles::normalize_angle(angle);}
 
 /// \brief Calculate if a provided angle in radians is within the arc formed by two other angles.
 /// \param target angle to test
